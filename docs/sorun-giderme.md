@@ -15,4 +15,4 @@
 | `EncodingError: The source image cannot be decoded` uyarıları | Çok uzun sayfa görüntüsü | Kareler etkilenmiyorsa zararsızdır. Gerekirse `capture.maxHeight` değerini düşür |
 | Ses çok sessiz | Müzik kazancı düşük ya da efektler kapalı | `audio.musicGainDb`, `audio.sfx` |
 
-← [Ses](ses.md) · [Yaklaşım karşılaştırması](karsilastirma.md) →
+← [Ses](ses.md) · [Belgeler](README.md)
