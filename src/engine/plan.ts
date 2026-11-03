@@ -50,7 +50,7 @@ export const GROW_STEP = 3;
 const HEADLINE = 30;
 
 export const DEFAULT_PALETTE = ['#3B82F6', '#F59E0B', '#10B981', '#EF4444', '#8B5CF6', '#EC4899', '#06B6D4', '#84CC16', '#F97316', '#6366F1', '#14B8A6'];
-export const DEFAULT_TAGS = ['Düzen', 'Metin', 'Renk', 'Görsel', 'Izgara', 'Boşluk', 'İkon', 'Buton', 'Kart', 'Başlık', 'Hizalama', 'Gölge', 'Tipografi', 'Bileşen'];
+export const DEFAULT_TAGS = ['Layout', 'Text', 'Colour', 'Image', 'Grid', 'Spacing', 'Icon', 'Button', 'Card', 'Heading', 'Align', 'Shadow', 'Type', 'Component'];
 
 const cache = new Map<string, Plan>();
 

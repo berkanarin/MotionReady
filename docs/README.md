@@ -1,12 +1,12 @@
-# Belgeler
+# Docs
 
-| Belge | Ne anlatır |
+| Doc | What it covers |
 |---|---|
-| [Kurulum](kurulum.md) | Gerekenler, ilk çalıştırma, platform notları |
-| [Proje ayarları](proje-ayarlari.md) | `project.json` içindeki her alan, varsayılanlar ve ne zaman değiştirileceği |
-| [Mimari](mimari.md) | Yakalama → plan → render hattı, üç görüntü, koordinat sistemleri, sürü hareketi |
-| [Kalite kontrol](kalite-kontrol.md) | Teslimden önce zorunlu kare ve ses kontrolleri |
-| [Ses](ses.md) | Efekt sentezi, kendi müziğini ekleme, ölçüm |
-| [Sorun giderme](sorun-giderme.md) | Sık karşılaşılan hatalar ve çözümleri |
+| [Setup](setup.md) | Requirements, first run, platform notes |
+| [Project settings](project-settings.md) | Every field in `project.json`, its default and when to change it |
+| [Architecture](architecture.md) | The capture → plan → render pipeline, the three images, coordinate systems, swarm motion |
+| [Quality check](quality-check.md) | Required frame and sound checks before delivery |
+| [Audio](audio.md) | Effect synthesis, adding your own music, measurement |
+| [Troubleshooting](troubleshooting.md) | Common errors and their fixes |
 
-Ajanlar için ayrıca kökteki [AGENTS.md](../AGENTS.md) ve [hazır istemler](../prompts/README.md).
+For agents, see also [AGENTS.md](../AGENTS.md) at the root and the [ready-made prompts](../prompts/README.md).

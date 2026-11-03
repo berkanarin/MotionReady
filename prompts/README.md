@@ -1,9 +1,9 @@
-# Hazır istemler
+# Ready-made prompts
 
-Kodlama ajanına bu repoyu açtıktan sonra verebileceğin başlangıç metinleri. Köşeli parantezleri doldur.
+Starting texts you can give a coding agent after opening this repo. Fill in the square brackets.
 
-| İstem | Ne zaman |
+| Prompt | When |
 |---|---|
-| [Yeni film](yeni-film.md) | Bir web sayfasından ilk filmi üretmek |
-| [Revizyon](revizyon.md) | Teslim edilen bir filmde belirli şeyleri değiştirmek |
-| [Motor geliştirme](motor-gelistirme.md) | MotionReady'ye yeni bir davranış eklemek |
+| [New film](new-film.md) | Make the first film from a web page |
+| [Revision](revision.md) | Change specific things in a delivered film |
+| [Engine change](engine-change.md) | Add a new behaviour to MotionReady |
