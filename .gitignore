@@ -1,0 +1,9 @@
+node_modules/
+out/
+.DS_Store
+*.log
+# captures are regenerated from the live page with `node mr.mjs capture <project>`
+projects/*/capture/
+# your own music and sound files stay local (licences differ per file)
+projects/*/audio/
+projects/*/out/

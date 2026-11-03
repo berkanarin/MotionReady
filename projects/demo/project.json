@@ -1,0 +1,16 @@
+{
+  "name": "demo",
+  "url": "site/index.html",
+  "address": "pusula.example",
+  "format": "landscape",
+  "bpm": 120,
+  "hook": 2,
+  "scenes": "auto",
+  "maxScenes": 5,
+  "barsPerScene": 1.5,
+  "cursors": 40,
+  "tags": ["Pano", "Takvim", "Rapor", "Odak", "Şablon", "Etiket", "Özet", "Hatırlatma", "Ekip", "Hedef"],
+  "cta": "Ücretsiz başla",
+  "end": { "title": "Pusula", "subtitle": "Ekibin haftası, tek ekranda.", "button": "Ücretsiz başla", "url": "pusula.example" },
+  "audio": { "sfx": true }
+}

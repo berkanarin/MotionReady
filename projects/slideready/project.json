@@ -1,0 +1,79 @@
+{
+  "name": "slideready",
+  "url": "https://slideready.net",
+  "format": "landscape",
+  "bpm": 102.004,
+  "hook": 2,
+  "scenes": [
+    {
+      "section": "overview",
+      "bars": 2
+    },
+    {
+      "section": "araclar",
+      "bars": 2
+    },
+    {
+      "section": "stage",
+      "bars": 1.5
+    },
+    {
+      "section": "kitaplik",
+      "bars": 1.5
+    },
+    {
+      "section": "kinetic",
+      "bars": 1
+    },
+    {
+      "section": "paketler",
+      "bars": 1.25
+    },
+    {
+      "section": "kurulum",
+      "bars": 1.5
+    }
+  ],
+  "cursors": 44,
+  "tags": [
+    "Renkler",
+    "Metin",
+    "Biçim",
+    "Nesne",
+    "Yerleşim",
+    "Çıktı",
+    "Notlar",
+    "Kitaplık",
+    "Kinetic",
+    "QR Kod",
+    "Stage",
+    "Renk Yöneticisi",
+    "Shrink Text",
+    "Madde İşaretleri",
+    "Tablo Stilleri",
+    "Yazı Tipi Yöneticisi",
+    "Sayı Animasyonu",
+    "Geri Sayım",
+    "Sunum Denetimi",
+    "İkonlar",
+    "Konuşma Kartları",
+    "İnfografik"
+  ],
+  "cta": "SlideReady İndir",
+  "end": {
+    "title": "SlideReady",
+    "subtitle": "PowerPoint · Ücretsiz",
+    "button": "Hemen indir",
+    "url": "slideready.net"
+  },
+  "capture": {
+    "hide": [
+      ".sr-loading-showcase",
+      "[data-showcase]"
+    ],
+    "wait": 3000
+  },
+  "audio": {
+    "sfx": true
+  }
+}

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pusula · Ekibin haftası tek ekranda</title>
+    <!-- Fictional product for the MotionReady demo. Every name, number and quote on this page is made up. -->
+    <style>
+      :root {
+        --ink: #14151a;
+        --muted: #5d6170;
+        --line: #e6e7ec;
+        --bg: #f7f7f9;
+        --card: #ffffff;
+        --accent: #ff5a36;
+        --accent-2: #2f6bff;
+        --night: #12131a;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--bg); }
+      .wrap { width: min(1200px, calc(100% - 64px)); margin: 0 auto; }
+      nav.top { position: sticky; top: 16px; z-index: 5; }
+      nav.top .bar { display: flex; align-items: center; gap: 28px; padding: 12px 14px 12px 18px; background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 10px 30px rgba(20, 21, 26, 0.06); }
+      nav.top .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+      nav.top .links { display: flex; gap: 22px; margin-left: 24px; font-size: 14px; color: var(--muted); }
+      nav.top .go { margin-left: auto; padding: 10px 18px; border-radius: 12px; background: var(--ink); color: #fff; font-weight: 600; font-size: 14px; }
+      .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding: 96px 0 80px; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+      .eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+      h1 { font-size: 76px; line-height: 0.98; letter-spacing: -0.035em; margin: 22px 0 20px; }
+      .lead { font-size: 20px; line-height: 1.5; color: var(--muted); max-width: 520px; }
+      .btns { display: flex; gap: 12px; margin-top: 30px; }
+      .btn { padding: 14px 22px; border-radius: 14px; font-weight: 600; font-size: 15px; }
+      .btn.dark { background: var(--ink); color: #fff; }
+      .btn.light { background: #fff; border: 1px solid var(--line); }
+      .board { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 30px 60px rgba(20, 21, 26, 0.1); }
+      .board h4 { font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 14px; }
+      .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .col { background: var(--bg); border-radius: 14px; padding: 12px; }
+      .col b { font-size: 13px; display: block; margin-bottom: 10px; }
+      .task { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px; font-size: 13px; margin-bottom: 8px; }
+      .task span { display: block; height: 6px; width: 60%; border-radius: 3px; margin-top: 8px; background: #ffd9cf; }
+      .task.blue span { background: #d6e2ff; }
+      section.features { padding: 70px 0; }
+      h2 { font-size: 52px; letter-spacing: -0.03em; line-height: 1.02; }
+      .sub { color: var(--muted); font-size: 18px; margin-top: 14px; max-width: 560px; line-height: 1.5; }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-height: 190px; }
+      .card .ico { width: 42px; height: 42px; border-radius: 12px; background: #fff1ec; display: grid; place-items: center; }
+      .card h3 { font-size: 19px; margin: 18px 0 8px; }
+      .card p { color: var(--muted); font-size: 15px; line-height: 1.5; }
+      section.night { background: var(--night); color: #fff; padding: 90px 0; }
+      .night .split { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+      .night .sub { color: #a9adbd; }
+      .night .list { margin-top: 26px; display: grid; gap: 12px; }
+      .night .row { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 14px; background: #1c1e28; border: 1px solid #2a2d3a; font-size: 15px; }
+      .night .row i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+      .chart { background: #1c1e28; border: 1px solid #2a2d3a; border-radius: 20px; padding: 26px; }
+      .chart svg { display: block; width: 100%; height: auto; }
+      section.price { padding: 90px 0; }
+      .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+      .plan { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+      .plan h3 { font-size: 18px; }
+      .plan .amt { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; margin: 14px 0 6px; }
+      .plan p { color: var(--muted); font-size: 14px; line-height: 1.5; min-height: 42px; }
+      .plan .pick { margin-top: 20px; padding: 12px; text-align: center; border-radius: 12px; background: var(--bg); font-weight: 600; font-size: 14px; }
+      section.cta { padding: 40px 0 90px; }
+      .cta .box { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 44px 48px; border-radius: 26px; background: #fff; border: 1px solid var(--line); }
+      .cta h2 { font-size: 40px; }
+      footer { padding: 34px 0 50px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+      footer .wrap { display: flex; justify-content: space-between; }
+      @media (max-width: 720px) {
+        .wrap { width: calc(100% - 32px); }
+        nav.top .links { display: none; }
+        .hero, .night .split { grid-template-columns: 1fr; padding-top: 56px; }
+        h1 { font-size: 48px; }
+        h2 { font-size: 34px; }
+        .grid, .plans { grid-template-columns: 1fr; }
+        .cta .box { flex-direction: column; align-items: flex-start; padding: 32px 26px; }
+        footer .wrap { flex-direction: column; gap: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <div class="wrap bar">
+        <div class="brand">
+          <svg width="30" height="30" viewBox="0 0 30 30"><rect width="30" height="30" rx="9" fill="#14151a" /><path d="M15 6 L19 15 L15 24 L11 15 Z" fill="#ff5a36" /><circle cx="15" cy="15" r="2.2" fill="#fff" /></svg>
+          Pusula
+        </div>
+        <div class="links"><span>Özellikler</span><span>Raporlar</span><span>Fiyatlar</span><span>Blog</span></div>
+        <div class="go">Ücretsiz başla</div>
+      </div>
+    </nav>
+
+    <header class="wrap hero">
+      <div>
+        <span class="eyebrow"><i></i>Ekipler için haftalık plan</span>
+        <h1>Ekibin haftası, tek ekranda.</h1>
+        <p class="lead">Pusula işleri, toplantıları ve hedefleri aynı panoda toplar. Kim neyle meşgul, ne gecikiyor, bir bakışta görün.</p>
+        <div class="btns"><span class="btn dark">Ücretsiz başla</span><span class="btn light">Demoyu izle</span></div>
+      </div>
+      <div class="board">
+        <h4>Bu hafta · Ürün ekibi</h4>
+        <div class="cols">
+          <div class="col"><b>Yapılacak</b><div class="task">Kayıt akışı metinleri<span></span></div><div class="task blue">Fiyat sayfası taslağı<span></span></div><div class="task">Mobil menü<span></span></div></div>
+          <div class="col"><b>Sürüyor</b><div class="task blue">Rapor ekranı<span></span></div><div class="task">E-posta şablonu<span></span></div></div>
+          <div class="col"><b>Bitti</b><div class="task">Giriş sayfası<span></span></div><div class="task blue">Takvim bağlantısı<span></span></div></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="features" id="ozellikler">
+      <div class="wrap">
+        <h2>Planı kuran, sizi değil işi yoran araçlar.</h2>
+        <p class="sub">Her kart tek bir işi iyi yapar. Hepsi aynı panoda birbirine bağlıdır.</p>
+        <div class="grid">
+          <div class="card"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="14" rx="3" fill="none" stroke="#ff5a36" stroke-width="2" /></svg></div><h3>Haftalık pano</h3><p>İşleri sürükleyip bırakın; durum her değiştiğinde ekip anında görür.</p></div>
+          <div class="card"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="#ff5a36" stroke-width="2" /></svg></div><h3>Odak saatleri</h3><p>Toplantısız saatleri takvime işleyin, bildirimler o sürede susar.</p></div>
+          <div class="card"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 15 L8 9 L12 12 L17 5" fill="none" stroke="#ff5a36" stroke-width="2" /></svg></div><h3>Haftalık özet</h3><p>Cuma günü biten, kayan ve bekleyen işler tek sayfada hazırdır.</p></div>
+          <div class="card"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M4 10 h12 M10 4 v12" stroke="#ff5a36" stroke-width="2" /></svg></div><h3>Hızlı ekleme</h3><p>Bir cümle yazın; Pusula kişiyi, tarihi ve etiketi kendisi ayırır.</p></div>
+          <div class="card"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="6" fill="none" stroke="#ff5a36" stroke-width="2" /></svg></div><h3>Yük dengesi</h3><p>Kimin haftası taştı, kimde boşluk var; renkler önceden söyler.</p></div>
+          <div class="card"><div class="ico"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 5 h10 v10 h-10 z M5 10 h10" fill="none" stroke="#ff5a36" stroke-width="2" /></svg></div><h3>Şablonlar</h3><p>Sprint, lansman ve işe alım planları birkaç tıkla hazır.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="night" id="raporlar">
+      <div class="wrap split">
+        <div>
+          <h2>Gecikmeyi, gecikmeden görün.</h2>
+          <p class="sub">Haftalık rapor; biten işleri, kayan tarihleri ve ekibin yükünü tek grafikte gösterir.</p>
+          <div class="list">
+            <div class="row"><i></i>Biten işler ve kalan süre</div>
+            <div class="row"><i></i>Kayan tarihler ve nedenleri</div>
+            <div class="row"><i></i>Kişi başına haftalık yük</div>
+          </div>
+        </div>
+        <div class="chart">
+          <svg viewBox="0 0 520 300">
+            <g fill="#2a2d3a"><rect x="20" y="40" width="480" height="1" /><rect x="20" y="120" width="480" height="1" /><rect x="20" y="200" width="480" height="1" /></g>
+            <g fill="#ff5a36"><rect x="40" y="150" width="38" height="130" rx="6" /><rect x="120" y="110" width="38" height="170" rx="6" /><rect x="200" y="170" width="38" height="110" rx="6" /><rect x="280" y="80" width="38" height="200" rx="6" /><rect x="360" y="130" width="38" height="150" rx="6" /><rect x="440" y="60" width="38" height="220" rx="6" /></g>
+            <path d="M59 140 L139 100 L219 160 L299 70 L379 120 L459 50" fill="none" stroke="#2f6bff" stroke-width="4" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="price" id="fiyatlar">
+      <div class="wrap">
+        <h2>Küçük ekipten büyüğe, aynı pano.</h2>
+        <p class="sub">Tüm planlarda sınırsız pano ve haftalık özet vardır.</p>
+        <div class="plans">
+          <div class="plan"><h3>Başlangıç</h3><div class="amt">Ücretsiz</div><p>5 kişiye kadar ekipler için.</p><div class="pick">Seç</div></div>
+          <div class="plan"><h3>Ekip</h3><div class="amt">Aylık</div><p>Raporlar, şablonlar ve odak saatleri.</p><div class="pick">Seç</div></div>
+          <div class="plan"><h3>Kurum</h3><div class="amt">Teklif</div><p>Tek oturum açma ve öncelikli destek.</p><div class="pick">Seç</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="basla">
+      <div class="wrap">
+        <div class="box">
+          <h2>Haftayı birlikte planlayın.</h2>
+          <span class="btn dark">Ücretsiz başla</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap"><span>Pusula, MotionReady için kurgulanmış bir örnek üründür.</span><span>pusula.example</span></div>
+    </footer>
+  </body>
+</html>
