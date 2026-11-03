@@ -5,7 +5,7 @@
 import { execFileSync, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { END } from '../src/engine/endTiming';
+import { endBeats } from '../src/engine/endTiming';
 import { GROW_STEP, GROW_STEPS, getPlan } from '../src/engine/plan';
 import { computeTiming } from '../src/engine/timing';
 import type { Capture, ProjectConfig } from '../src/engine/types';
@@ -50,6 +50,7 @@ if (T.press != null) {
   cues.push({ f: T.press + 4, kind: 'chime', pan: 0.2 });
 }
 if (cfg.end) {
+  const END = endBeats(cfg.end.duration);
   const at = (sec: number) => Math.round(T.endFrom + sec * T.fps);
   cues.push({ f: at(END.vortex + 0.1), kind: 'swirl', pan: 0 });
   for (let k = 0; k < 8; k++) cues.push({ f: at(END.form + 0.15 + k * 0.07), kind: 'step', pan: ((k % 3) - 1) * 0.3, i: k });

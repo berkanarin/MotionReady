@@ -1,7 +1,7 @@
 // Single source of timing and geometry for a project: film size, browser window, tempo grid, which page bands are
 // built in which scene, the camera's scroll keys, the finale and the end card. Pure function of (config, capture);
 // imported by the composition, the plan and the CLI (cues, checks).
-import { END } from './endTiming';
+import { endBeats } from './endTiming';
 import type { Capture, Format, ProjectConfig } from './types';
 
 export const SIZE: Record<Format, { W: number; H: number; mx: number; my: number }> = {
@@ -122,7 +122,9 @@ export const computeTiming = (cfg: ProjectConfig, cap: Capture): Timing => {
     const from = bar(cum);
     const to = bar(cum + p.bars);
     const y0 = i === 0 ? 0 : Math.max(prevY1, Math.max(sy, rest));
-    const y1 = Math.min(sy + sh, restEnd + VIEW_H);
+    // the band runs on to the next picked section, so loose rows between sections that this view shows get built too
+    const nextY = i + 1 < picked.length ? picked[i + 1].r[1] : sy + sh;
+    const y1 = Math.min(Math.max(sy + sh, nextY), restEnd + VIEW_H);
     scenes.push({ id: p.id, from, to, y0, y1: Math.max(y0, y1), rest, restEnd, doneAt: to - 8 });
     prevY1 = Math.max(prevY1, y1);
     if (i > 0) {
@@ -151,7 +153,7 @@ export const computeTiming = (cfg: ProjectConfig, cap: Capture): Timing => {
     cum += 0.5;
   }
   const endFrom = bar(cum);
-  const total = endFrom + (cfg.end ? Math.round(END.dur * fps) : Math.round(0.5 * fps));
+  const total = endFrom + (cfg.end ? Math.round(endBeats(cfg.end.duration).dur * fps) : Math.round(0.5 * fps));
   scroll.push({ f: total, y: last.restEnd });
   return { fps, W: sz.W, H: sz.H, bpm, BAR, BEAT, DROP, bar, win, K, VIEW_H, MAX_SCROLL, navBottom, scenes, scroll, press, ctaBlock: ctaVisible ? ctaIdx : null, gather, leave, endFrom, total };
 };

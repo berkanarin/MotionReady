@@ -18,7 +18,7 @@ Her proje `projects/<ad>/project.json` dosyasıdır. Yalnızca `url` zorunludur;
 | `tags` | genel liste | Cursor'ların çalışırken taşıdığı etiketler: ürünün araçları, özellikleri, ekip adları… |
 | `palette` | 11 renk | Cursor renkleri. |
 | `cta` | yok | Finalde sürünün toplanıp bastığı butonun görünen metni. Aynı metin birkaç yerde geçerse buton içindeki ve sayfada en alttaki seçilir. |
-| `end` | yok | Kapanış kartı: `{ "title", "subtitle", "button", "url" }`. Yoksa film kurulumdan sonra biter. |
+| `end` | yok | Kapanış kartı: `{ "title", "subtitle", "button", "url", "duration" }`. `duration` saniyedir (3.5–8, varsayılan 5); kısa filmlerde kısalt. Yoksa film kurulumdan sonra biter. |
 | `background` | koyu gradyan | Pencerenin arkasındaki zemin (CSS `background`). |
 | `address` | URL'nin alan adı | Tarayıcı çubuğunda görünen adres. |
 | `capture.width` | formata göre | Yakalama genişliği (CSS px). |

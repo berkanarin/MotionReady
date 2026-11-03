@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { continueRender, delayRender, Img, staticFile } from 'remotion';
 import { clamp01, E, hitPulse, prog, rand } from '../engine/anim';
-import { END, END_EXTRA } from '../engine/endTiming';
+import { endBeats, END_EXTRA } from '../engine/endTiming';
 import { SANS, useFilm } from './context';
 
 // ---------------------------------------------------------------------------------------------
@@ -96,6 +96,7 @@ const Arrow: React.FC<{ color: string }> = ({ color }) => (
 export const EndCard: React.FC<{ f: number }> = ({ f }) => {
   const { T, cap, cfg, plan, project } = useFilm();
   const end = cfg.end!;
+  const END = endBeats(end.duration);
   const N = plan.workers.length + END_EXTRA;
   const logoSrc = cap.logo ? staticFile(`${project}/capture/${cap.logo.file}`) : null;
   const letter = (end.title || cap.title || cfg.name).trim().charAt(0).toLocaleUpperCase('tr');

@@ -14,6 +14,8 @@ export type EndSpec = {
   subtitle?: string;
   button?: string;
   url?: string;
+  /** Seconds of the end card (3.5–8, default 5); its beats scale to fit. */
+  duration?: number;
 };
 
 export type ProjectConfig = {
@@ -83,7 +85,7 @@ export type Capture = {
   H: number;
   DPR: number;
   nav: { r: Rect; radius: number } | null;
-  /** The nav's first picture, captured sharp (capture/logo.png) for the end card. */
+  /** The nav's first picture (or, with no nav, the first picture in the top band), captured sharp (capture/logo.png) for the end card. */
   logo?: { r: Rect; file: string } | null;
   sections: { id: string; r: Rect; dark: boolean }[];
   blocks: RawBlock[];

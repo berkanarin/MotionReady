@@ -106,8 +106,12 @@ const makePlan = (cfg: ProjectConfig, cap: Capture, T: Timing): Plan => {
     });
   const inside = (b: Block, c: Block) => b !== c && b.x + b.w / 2 >= c.x && b.x + b.w / 2 <= c.x + c.w && b.y + b.h / 2 >= c.y && b.y + b.h / 2 <= c.y + c.h;
 
-  // the hook's logo tile flies into the nav's first picture on the drop
-  const logo = blocks.filter((b) => b.fixed && b.kind === 'media').sort((a, b) => a.x - b.x)[0] ?? null;
+  // the hook's logo tile flies into the nav's first picture on the drop (no nav: the captured top-band mark)
+  const lr = cap.logo?.r;
+  const logo =
+    blocks.filter((b) => b.fixed && b.kind === 'media').sort((a, b) => a.x - b.x)[0] ??
+    (lr ? blocks.find((b) => b.kind === 'media' && b.scene === 0 && b.x === lr[0] && b.y === lr[1] && b.w === lr[2] && b.h === lr[3]) : undefined) ??
+    null;
   if (logo) {
     logo.instant = true;
     logo.t0 = T.DROP + 12;

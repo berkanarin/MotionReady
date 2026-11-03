@@ -172,10 +172,10 @@ export const capture = async (name) => {
     await b.send('Emulation.setDeviceMetricsOverride', { width: W, height: layout.H, deviceScaleFactor: DPR, mobile: format === 'portrait' });
     await b.wait(900);
     await shot('page.png');
-    // the product's mark (first picture in the sticky nav), sharp enough to fill the end card
+    // the product's mark (first picture in the sticky nav, or in the top band when there is no nav), sharp enough to fill the end card
     let logo = null;
-    const nr = layout.nav?.r;
-    const mark = nr && layout.blocks.filter((k) => k.kind === 'media' && k.r[0] >= nr[0] - 2 && k.r[1] >= nr[1] - 2 && k.r[0] + k.r[2] <= nr[0] + nr[2] + 2 && k.r[1] + k.r[3] <= nr[1] + nr[3] + 2).sort((a, c) => a.r[0] - c.r[0])[0];
+    const nr = layout.nav?.r ?? [0, 0, layout.W, 160];
+    const mark = layout.blocks.filter((k) => k.kind === 'media' && k.r[0] >= nr[0] - 2 && k.r[1] >= nr[1] - 2 && k.r[0] + k.r[2] <= nr[0] + nr[2] + 2 && k.r[1] + k.r[3] <= nr[1] + nr[3] + 2).sort((a, c) => a.r[0] - c.r[0])[0];
     if (mark) {
       const [x, y, w, h] = mark.r;
       const scale = 480 / (Math.max(w, h) * DPR);
