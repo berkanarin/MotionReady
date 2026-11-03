@@ -8,6 +8,6 @@
 | [Kalite kontrol](kalite-kontrol.md) | Teslimden önce zorunlu kare ve ses kontrolleri |
 | [Ses](ses.md) | Efekt sentezi, kendi müziğini ekleme, ölçüm |
 | [Sorun giderme](sorun-giderme.md) | Sık karşılaşılan hatalar ve çözümleri |
-| [Videohmm ile karşılaştırma](karsilastirma.md) | İki yaklaşımın farkı ve MotionReady'nin ondan aldıkları |
+| [Yaklaşım karşılaştırması](karsilastirma.md) | Elle çizilen tanıtım filmi ile otomatik yakalamanın farkı; ilham kaynakları |
 
 Ajanlar için ayrıca kökteki [AGENTS.md](../AGENTS.md) ve [hazır istemler](../prompts/README.md).

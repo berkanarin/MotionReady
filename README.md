@@ -6,7 +6,7 @@
 
 Sayfa yakalanır, silinir ve araç etiketli onlarca cursor tarafından parça parça yeniden kurulur. Kodla, kare kare, her render aynı sonucu verir.
 
-[Hızlı başlangıç](#hızlı-başlangıç) · [Proje ayarları](docs/proje-ayarlari.md) · [Nasıl çalışır](docs/mimari.md) · [Kalite kontrol](docs/kalite-kontrol.md) · [Ajan rehberi](AGENTS.md) · [Videohmm ile karşılaştırma](docs/karsilastirma.md)
+[Hızlı başlangıç](#hızlı-başlangıç) · [Proje ayarları](docs/proje-ayarlari.md) · [Nasıl çalışır](docs/mimari.md) · [Kalite kontrol](docs/kalite-kontrol.md) · [Ajan rehberi](AGENTS.md) · [Yaklaşım karşılaştırması](docs/karsilastirma.md)
 
 ![Pusula demo sayfasının cursor sürüsüyle kurulması](media/demo-build.gif)
 
@@ -98,7 +98,7 @@ node mr.mjs studio                   # Remotion Studio (props: {"project":"urunu
 | [`src/engine/`](src/engine) | Saf fonksiyonlar: zamanlama ve kamera (`timing.ts`), görev planı ve cursor hareketi (`plan.ts`), kapanış ritmi (`endTiming.ts`) |
 | [`src/film/`](src/film) | Remotion bileşenleri: tarayıcı penceresi ve tasarım katmanı, sayfa blokları, sürü, hook, kapanış |
 | [`projects/`](projects) | Her proje bir klasör: `project.json` (+ `capture/`, `audio/`, `out/`; bunlar git'e girmez) |
-| [`docs/`](docs/README.md) | Kurulum, ayarlar, mimari, kalite kontrol, ses, sorun giderme, karşılaştırma |
+| [`docs/`](docs/README.md) | Kurulum, ayarlar, mimari, kalite kontrol, ses, sorun giderme, yaklaşım karşılaştırması |
 | [`prompts/`](prompts/README.md) | Kodlama ajanına verilecek hazır istemler |
 | [`media/`](media) | README GIF'leri ve kontrol sayfası (gerçek renderlar) |
 
@@ -106,9 +106,13 @@ node mr.mjs studio                   # Remotion Studio (props: {"project":"urunu
 
 Claude Code veya başka bir ajana bu repoyu ver ve [`AGENTS.md`](AGENTS.md)'yi okut. Rehber şu akışı tarif eder: sayfayı yakala, planı ve sahne tablosunu onaya sun, render al, karelerle doğrula, teslim et. Hazır istemler [`prompts/`](prompts/README.md) içinde.
 
-## Lisanslar ve teşekkür
+## Lisans
 
-- Render için [Remotion](https://www.remotion.dev) kullanılır. Remotion bireyler ve küçük ekipler için ücretsizdir; daha büyük şirketlerde [Remotion şirket lisansı](https://www.remotion.dev/license) gerekir.
-- Sürünün sayfayı kurma fikri, Joel Califa'nın [Swarm](https://califa.github.io/swarm-site/) sitesinden ve onun izinden giden [swarm-cursors](https://github.com/DhvanilPatel/swarm-cursors) eklentisinden ilham alır. Bu repoda o projelerin kodu **yoktur**; motor sıfırdan yazılmıştır. Nedenini [karşılaştırma](docs/karsilastirma.md) belgesi anlatır.
+MotionReady [MIT lisansı](LICENSE) ile yayınlanır: ticari işler dahil kullanabilir, değiştirebilir ve dağıtabilirsin. Tek şart, telif ve lisans bildiriminin kopyalarda korunması.
+
+**Remotion ayrı lisanslıdır.** MotionReady render için [Remotion](https://www.remotion.dev) kullanır. Remotion bireyler ve küçük ekipler için ücretsizdir; daha büyük bir şirket adına kullanıyorsan [Remotion şirket lisansı](https://www.remotion.dev/license) gerekir. MotionReady'nin MIT lisansı bunu kapsamaz.
+
+## Teşekkür
+- Sürünün sayfayı kurma fikri, Joel Califa'nın [Swarm](https://califa.github.io/swarm-site/) sitesinden ve onun izinden giden [swarm-cursors](https://github.com/DhvanilPatel/swarm-cursors) eklentisinden ilham alır. Bu repoda o projelerin kodu **yoktur**; motor sıfırdan yazılmıştır. Nedenini [yaklaşım karşılaştırması](docs/karsilastirma.md) anlatır.
 - `projects/demo` sayfasındaki ürün, isimler ve metinler kurgusaldır.
 - Kendi müzik ve ses dosyaların `projects/<ad>/audio/` altında kalır ve git'e girmez; her dosyanın lisansı kendine aittir.
